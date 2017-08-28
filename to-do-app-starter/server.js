@@ -4,7 +4,7 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const path = require('path');
-const taskRoutes = require('./routes/task-routes');
+
 
 // initializing the app
 const app = express();
@@ -14,7 +14,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(methodOverride('_method'));
-app.use('/tasks', taskRoutes);
+
 
 // where to look for view template
 app.set('views', path.join(__dirname, 'views'));
@@ -28,10 +28,25 @@ app.listen(port, () => {
     console.log(`Listening on port ${port}`);
 });
 
-// Our index route
+// // Our index route
+// app.get('/', (req, res) => {
+//   res.send('Welcome to the to-do list!');
+// });
+
+// new default route
 app.get('/', (req, res) => {
-  res.send('Welcome to the to-do list!');
+  res.render('index', {
+    logoName: 'TO DO APP' });
 });
+
+app.get('../tasks', (req, res) => {
+  res.render('../tasks', {
+    logoName: 'TO DO APP' });
+});
+
+// importing tasks routes and telling the app to use them
+const taskRoutes = require('./routes/task-routes');
+app.use('/tasks', taskRoutes);
 
 // Error handler
 app.get('*', (req, res) => {

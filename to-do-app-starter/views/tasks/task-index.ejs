@@ -1,0 +1,16 @@
+<%# This is the view that will render when we visit /tasks %>
+
+<%# include header is going to go here %>
+
+<a href="/tasks/add">Add a task</a>
+  <% for (let task of data) { %>
+    <div class='task'>
+      <p><%= task.task_title %></p>
+      <a href='/tasks/<%= task.id%>'>Learn more</a>
+      <form action="/tasks/<%= task.id %>?_method=Delete " method="Post">
+        <input type="Submit" value="Delete"/>
+      </form>
+    </div>
+  <% } %>
+
+<%# include foorter is going to go here %>

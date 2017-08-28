@@ -5,7 +5,8 @@ const taskController = {};
 taskController.index = (req, res) => {
   Task.findAll()
     .then(tasks => {
-      res.json({
+      // where i left off
+      res.render('tasks/task-index', {
         message: 'Showing all tasks',
         data: tasks,
       });
@@ -18,7 +19,7 @@ taskController.index = (req, res) => {
 taskController.show = (req, res) => {
   Task.findById(req.params.id)
     .then(task => {
-      res.json({
+      res.render('tasks/task-single', {
         message: 'Displaying one task',
         data: task,
       });
@@ -34,11 +35,15 @@ taskController.create = (req, res) => {
     status: req.body.status,
     category: req.body.category,
   }).then (task => {
-    res.json({
-      messsage: 'Task added successfully!',
-      data: task,
-    });
-  })
+    // res.json({
+    //   messsage: 'Task added successfully!',
+    //   data: task,
+    // });
+    res.redirect('/tasks');
+  }).catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 };
 
 taskController.update = (req, res) => {

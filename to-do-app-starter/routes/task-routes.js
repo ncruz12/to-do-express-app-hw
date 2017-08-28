@@ -6,6 +6,10 @@ const taskController = require('../controllers/tasks-controller');
 taskRoutes.get('/', taskController.index);
 taskRoutes.post('/', taskController.create);
 
+taskRoutes.get('/add', (req, res) => {
+  res.render('tasks/task-add');
+});
+
 taskRoutes.get('/:id', taskController.show);
 taskRoutes.put('/:id', taskController.update);
 taskRoutes.delete('/:id', taskController.delete);

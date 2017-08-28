@@ -1,0 +1,28 @@
+<%# <h1>Hello from Index File</h1> %>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do App</title>
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+  <header id="page-header">
+    <div class="wrapper">
+      <h1><%= logoName %></a></h1>
+      <nav>
+        <ul>
+          <li><strong><a href="/">Home</a></strong></li>
+          <li><strong><a href="../tasks">TO-DO's</a></strong></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <div class="home-screen">
+    <p>Welcome to your to do list!</p>
+    <button id="button"><a href="../tasks">View TO-DO's</a></button>
+  </div>
+  <%# inculde footer partial here %>
+</body>
+</html>
